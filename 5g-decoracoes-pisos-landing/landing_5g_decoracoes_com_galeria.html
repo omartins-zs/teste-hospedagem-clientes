@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>5G Decorações - Pisos Laminados</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+.hero-bg {
+    background: url('5g/PLANO_DEE_FUNDO.webp') center/cover fixed;
+}
+.whatsapp-float {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    background: #25d366;
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    z-index: 999;
+}
+</style>
+</head>
+
+<body class="bg-gray-50">
+
+<section id="galeria" class="py-20 px-4 bg-white">
+<div class="max-w-7xl mx-auto">
+<h2 class="text-4xl font-bold text-center mb-10">Nossos Trabalhos</h2>
+
+<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+<img src="5g/5gdecoracoes_20230418_p_3083952457947934183_1_3083952454365982251.webp" class="gallery-image cursor-pointer rounded-lg">
+<img src="5g/5gdecoracoes_20230418_p_3083954780585796737_1_3083954776760569946.webp" class="gallery-image cursor-pointer rounded-lg">
+<img src="5g/5gdecoracoes_20230708_p_3142690839154474618_1_3142690833995412742.webp" class="gallery-image cursor-pointer rounded-lg">
+<img src="5g/5gdecoracoes_12553626855_header.jpg" class="gallery-image cursor-pointer rounded-lg">
+</div>
+</div>
+</section>
+
+<!-- LIGHTBOX -->
+<div id="lightbox" class="fixed inset-0 bg-black bg-opacity-90 hidden items-center justify-center z-[9999]">
+<button id="closeLightbox" class="absolute top-5 right-5 text-white text-3xl">&times;</button>
+<button id="prevImage" class="absolute left-5 text-white text-4xl">&#10094;</button>
+<img id="lightboxImage" class="max-w-[90%] max-h-[90%] rounded-lg shadow-lg">
+<button id="nextImage" class="absolute right-5 text-white text-4xl">&#10095;</button>
+</div>
+
+<script>
+const images = document.querySelectorAll('.gallery-image');
+const lightbox = document.getElementById('lightbox');
+const lightboxImage = document.getElementById('lightboxImage');
+const closeBtn = document.getElementById('closeLightbox');
+const prevBtn = document.getElementById('prevImage');
+const nextBtn = document.getElementById('nextImage');
+
+let currentIndex = 0;
+
+images.forEach((img, index) => {
+    img.addEventListener('click', () => {
+        currentIndex = index;
+        showImage();
+        lightbox.classList.remove('hidden');
+        lightbox.classList.add('flex');
+    });
+});
+
+function showImage() {
+    lightboxImage.src = images[currentIndex].src;
+}
+
+function closeLightbox() {
+    lightbox.classList.add('hidden');
+    lightbox.classList.remove('flex');
+}
+
+closeBtn.addEventListener('click', closeLightbox);
+
+nextBtn.addEventListener('click', () => {
+    currentIndex = (currentIndex + 1) % images.length;
+    showImage();
+});
+
+prevBtn.addEventListener('click', () => {
+    currentIndex = (currentIndex - 1 + images.length) % images.length;
+    showImage();
+});
+
+document.addEventListener('keydown', (e) => {
+    if (lightbox.classList.contains('hidden')) return;
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowRight') nextBtn.click();
+    if (e.key === 'ArrowLeft') prevBtn.click();
+});
+</script>
+
+</body>
+</html>
