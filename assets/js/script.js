@@ -1,5 +1,11 @@
 // Validação e envio do formulário
 document.addEventListener('DOMContentLoaded', function() {
+    // Ano automático no footer
+    const currentYearSpan = document.getElementById('current-year');
+    if (currentYearSpan) {
+        currentYearSpan.textContent = new Date().getFullYear();
+    }
+
     // Configurar links do WhatsApp
     let whatsappNumber = '119622334151'; // Número padrão (edite no config.js)
     let whatsappMessage = 'Olá,%20gostaria%20de%20um%20orçamento%20para%20piso';
