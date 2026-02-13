@@ -469,3 +469,69 @@ function initLightbox() {
         });
     }
 }
+
+// Função para toggle do collapse "Mais Escolhidos"
+function toggleMaisEscolhidos(marca) {
+    const collapse = document.getElementById(`collapse-${marca}`);
+    if (collapse) {
+        collapse.classList.toggle('hidden');
+    }
+}
+
+// Modal para visualizar imagens dos catálogos em tamanho maior
+function openImageModal(imageSrc) {
+    // Criar modal se não existir
+    let modal = document.getElementById('catalog-image-modal');
+    if (!modal) {
+        modal = document.createElement('div');
+        modal.id = 'catalog-image-modal';
+        modal.className = 'fixed inset-0 z-[3000] hidden items-center justify-center bg-black bg-opacity-90 backdrop-blur-sm';
+        modal.innerHTML = `
+            <div class="relative w-full h-full flex items-center justify-center p-4">
+                <button onclick="closeImageModal()" 
+                        class="absolute top-4 right-4 md:top-6 md:right-6 text-white hover:text-gray-300 transition-colors duration-300 z-10 bg-black bg-opacity-50 rounded-full p-3 md:p-4 hover:bg-opacity-70 focus:outline-none focus:ring-2 focus:ring-white"
+                        aria-label="Fechar imagem">
+                    <i class="fas fa-times text-2xl md:text-3xl"></i>
+                </button>
+                <img id="catalog-modal-image" 
+                     src="" 
+                     alt="Catálogo" 
+                     class="max-w-full max-h-[90vh] md:max-h-[95vh] object-contain rounded-lg shadow-2xl">
+            </div>
+        `;
+        document.body.appendChild(modal);
+    }
+    
+    const modalImage = document.getElementById('catalog-modal-image');
+    if (modalImage) {
+        modalImage.src = imageSrc;
+    }
+    
+    modal.classList.remove('hidden');
+    modal.classList.add('flex');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeImageModal() {
+    const modal = document.getElementById('catalog-image-modal');
+    if (modal) {
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+        document.body.style.overflow = '';
+    }
+}
+
+// Fechar modal ao clicar no fundo
+document.addEventListener('click', function(e) {
+    const modal = document.getElementById('catalog-image-modal');
+    if (modal && e.target === modal) {
+        closeImageModal();
+    }
+});
+
+// Fechar modal com ESC
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+        closeImageModal();
+    }
+});
