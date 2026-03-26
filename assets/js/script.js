@@ -141,7 +141,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 from_phone: formData.telefone,
                 from_city: formData.cidade,
                 message: formData.mensagem,
-                to_email: 'contato@5gdecoracoes.com.br'
+                to_email: 'givaldodecor@hotmail.com'
             };
 
             emailjs.send(
