@@ -78,8 +78,12 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     
     // Inicializar EmailJS se disponível
-    if (typeof emailjs !== 'undefined' && CONFIG.emailjs && CONFIG.emailjs.publicKey !== 'YOUR_PUBLIC_KEY') {
-        emailjs.init(CONFIG.emailjs.publicKey);
+    if (typeof emailjs !== 'undefined' && CONFIG.emailjs && CONFIG.emailjs.publicKey && CONFIG.emailjs.publicKey !== 'YOUR_PUBLIC_KEY') {
+        const publicKey = CONFIG.emailjs.publicKey.trim();
+        emailjs.init({
+            publicKey: publicKey,
+            blockHeadless: true
+        });
     }
     
     // Função de validação dos campos do formulário
@@ -145,9 +149,12 @@ document.addEventListener('DOMContentLoaded', function() {
             };
 
             emailjs.send(
-                CONFIG.emailjs.serviceId,
-                CONFIG.emailjs.templateId,
-                templateParams
+                CONFIG.emailjs.serviceId.trim(),
+                CONFIG.emailjs.templateId.trim(),
+                templateParams,
+                {
+                    publicKey: CONFIG.emailjs.publicKey.trim(),
+                }
             )
             .then(function(response) {
                 showMessage('Orçamento enviado com sucesso! Entraremos em contato em breve.', 'success');
@@ -155,8 +162,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 submitEmailButton.innerHTML = originalText;
                 submitEmailButton.disabled = false;
             }, function(error) {
-                console.error('Erro ao enviar email:', error);
-                showMessage('Erro ao enviar. Por favor, tente novamente ou entre em contato pelo WhatsApp.', 'error');
+                console.error('ERRO DETALHADO DO EMAILJS:', error);
+                const errorDetail = error.text || error.message || 'Verifique se o serviço está conectado no EmailJS.';
+                showMessage('Erro ao enviar: ' + errorDetail, 'error');
                 submitEmailButton.innerHTML = originalText;
                 submitEmailButton.disabled = false;
             });

@@ -30,8 +30,8 @@ const CONFIG = {
     // ═══════════════════════════════════════════════════════════════
     
     emailjs: {
-        publicKey: 'YOUR_PUBLIC_KEY', // ⬅️ Sua Public Key do EmailJS
-        serviceId: 'YOUR_SERVICE_ID',  // ⬅️ ID do seu serviço de email
-        templateId: 'YOUR_TEMPLATE_ID' // ⬅️ ID do template de email
+        publicKey: 'rQH05lUGxUDVW3hU_', // ⬅️ Sua Public Key do EmailJS
+        serviceId: 'service_ju5fnoi',  // ⬅️ ID do seu serviço de email
+        templateId: 'template_v69ktne' // ⬅️ ID do template de email
     }
 };

@@ -75,15 +75,23 @@
     }
     </script>
     
-    <!-- Favicon -->
-    <!-- <link rel="icon" type="image/png" href="assets/images/logos/piso_favicon.png"> -->
     <link rel="icon" type="image/png" href="assets/images/logos/Logo_Melhorado_Sem_Fundo.png">
     
-    <!-- Mobile Theme Colors -->
-    <meta name="theme-color" content="#F5F1E8" media="(prefers-color-scheme: light)">
-    <meta name="theme-color" content="#1f2937" media="(prefers-color-scheme: dark)">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Forçar Modo Claro em todo o site -->
+    <meta name="color-scheme" content="light">
+    <meta name="theme-color" content="#F5F1E8">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="msapplication-navbutton-color" content="#F5F1E8">
+    <meta name="apple-mobile-web-app-title" content="5G Decorações">
     <link rel="manifest" href="/manifest.json">
+    
+    <style>
+        /* Garante que o bege claro seja forçado mesmo se o navegador tentar forçar modo escuro */
+        :root { color-scheme: light !important; }
+        body { background-color: #f9fafb !important; color: #111827 !important; }
+        nav, .navbar-scroll { background-color: #F5F1E8 !important; }
+    </style>
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
