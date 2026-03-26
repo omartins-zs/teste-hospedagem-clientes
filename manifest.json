@@ -1,0 +1,15 @@
+{
+  "name": "5G Decorações",
+  "short_name": "5G Decorações",
+  "start_url": "/",
+  "display": "standalone",
+  "theme_color": "#F5F1E8",
+  "background_color": "#F5F1E8",
+  "icons": [
+    {
+      "src": "/assets/images/logos/Logo_Melhorado_Sem_Fundo.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
