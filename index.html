@@ -86,6 +86,12 @@
     <meta name="apple-mobile-web-app-title" content="5G Decorações">
     <link rel="manifest" href="/manifest.json">
     
+    <!-- Evitar cache de arquivos HTML e garantir que atualizações sejam verificadas -->
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+
+    
     <style>
         /* Garante que o bege claro seja forçado mesmo se o navegador tentar forçar modo escuro */
         :root { color-scheme: light !important; }
@@ -1214,13 +1220,13 @@
             
             <div class="border-t border-gray-700 pt-8 text-center text-gray-400">
                 <p class="mb-2">&copy; <span id="current-year"></span> 5G Decorações. Todos os direitos reservados.</p>
-                <p class="text-sm mb-2">GABRIEL MATHEUS ALVES MARTINS - CNPJ: 58.155.095/0001-00</p>
+                <p class="text-sm mb-2">Givaldo Jacinto dos Santos Ltda - CNPJ: 62.872.588/0001-20</p>
                 <p class="text-sm">
-                    Desenvolvido por
-                    <a href="https://github.com/omartins-zs"
+                    Website desenvolvido por
+                    <a href="https://www.linkedin.com/in/gabriel-martins-0479811b0/"
                        target="_blank"
                        class="text-amber-400 hover:text-amber-300 transition-colors">
-                        <i class="fab fa-github mr-1"></i>omartins-zs
+                        <i class="fab fa-linkedin mr-1"></i>Gabriel Martins
                     </a>
                 </p>
             </div>
@@ -1277,8 +1283,9 @@
     <!-- EmailJS -->
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     
-    <!-- JavaScript -->
-    <script src="assets/js/config.js"></script>
-    <script src="assets/js/script.js"></script>
+    <!-- JavaScript com versionamento para evitar problemas de cache -->
+    <script src="assets/js/config.js?v=1.0.1"></script>
+    <script src="assets/js/script.js?v=1.0.1"></script>
+
 </body>
 </html>
